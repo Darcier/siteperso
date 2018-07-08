@@ -1,3 +1,6 @@
 index:
     path: /
     controller: App\Controller\IndexController::index
+competences:
+    path: /competences
+    controller: App\Controller\IndexController::competences

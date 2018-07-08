@@ -2,19 +2,42 @@
 
 {% block body %}
     <div class="page-header">
-        <div class="page-header-p1">victor</div>
+        <div class="page-header-p1">Victor</div>
         <div class="page-header-p2">
-            <span>robin</span>
+            <span>Robin</span>
         </div>
         <div class="page-header-p3 anim-text-flow">
             développeur web symfony
         </div>
     </div>
-    <div id="index-container" class="container-fluid">
-        <br>
-        <div class="container">
-
+    <div id="index-container">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="fake-info col-md-1 col-sm-1"></div>
+                <div id="left-infos" class="col-md-3 col-sm-4 col-12">
+                    <ul>
+                       <li><i class="fas fa-birthday-cake fa-2x"></i><br><span id="myAge"></span></li>
+                       <li><i class="fa fa-car fa-2x"></i><br><span>Véhiculé - Permis B</span></li>
+                       <li><i class="fa fa-home fa-2x"></i><br><span>Lyon</span></li>
+                       <li><i class="fas fa-tachometer-alt fa-2x"></i><br><span>En activité depuis 2016</span></li>
+                    </ul>
+                </div>
+                <div id="right-infos" class="col-md-7 col-sm-6 col-12">
+                    <p>Curator ad autem heiulans autem usque visus: quidam praecentor vocibus quod eosque praecentor nefariis usque quae praecentor audaces quidam baiolorum longe quidam vocibus curator urbis crebris audaces incitans subito Luscus. Environ 30 mots.</p>
+                    <p>Curator ad autem heiulans autem usque visus: quidam praecentor vocibus quod eosque praecentor nefariis usque quae praecentor audaces quidam baiolorum longe quidam vocibus curator urbis crebris audaces incitans subito Luscus. Environ 30 mots.</p>
+                    <p>Curator ad autem heiulans autem usque visus: quidam praecentor vocibus quod eosque praecentor nefariis usque quae praecentor audaces quidam baiolorum longe quidam vocibus curator urbis crebris audaces incitans subito Luscus. Environ 30 mots.</p>
+                </div>
+                <div class="fake-info col-md-1 col-sm-1"></div>
+                <div id="third-infos" class="col-12">
+                    <h2 class="text-center">A propos de ce site</h2>
+                    <ul>
+                        <li>Nginx</li>
+                        <li>PHP 7.1</li>
+                        <li>Symfony 4</li>
+                        <li>Bootstrap 4</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-
     </div>
 {% endblock %}

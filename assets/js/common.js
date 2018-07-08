@@ -9,4 +9,7 @@ $(function() {
 
         return '<span>' + chars.join('</span><span>') + '</span>';
     });
+    var today = new Date();
+    var myAge = today.getFullYear() - 1995;
+    $('#myAge').html(myAge + ' ans');
 });
