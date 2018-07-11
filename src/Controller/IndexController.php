@@ -26,4 +26,18 @@ class IndexController extends Controller
     public function competences() {
       return $this->render('index/competences.html.twig');
     }
+
+    /**
+     * @Route("/experiences", name="experiences")
+     */
+    public function experiences() {
+      return $this->render('index/experiences.html.twig');
+    }
+
+    /**
+     * @Route("/contact", name="contact")
+     */
+    public function contact() {
+      return $this->render('index/contact.html.twig');
+    }
 }
