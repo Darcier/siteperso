@@ -415,4 +415,17 @@ body {
       color: #ddd;
     }
   }
+  .btn {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+  }
+  #form_message {
+    resize: none;
+  }
+  #form_send {
+    display: block;
+    width: 250px;
+    margin: 20px auto 50px auto;
+  }
 }

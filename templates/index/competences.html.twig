@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/competences.css') }}">
+{% endblock %}
+
 {% block body %}
     <div class="page-header">
         <h2 class="page-title">Mes compétences</h2>
@@ -10,39 +15,39 @@
     <div class="custom-container">
         <div class="container h-100">
             <div class="row h-100">
-                <div class="left-info bg-light offset-md-4 col-md-2 offset-sm-3 col-sm-3 col-12">
-                    <ul class="custom-list text-left">
-                        <li>PHP</li>
-                        <li>Javascript</li>
-                        <li>CSS / SCSS</li>
-                        <li><i class="fab fa-windows fa-2x"></i>Windows</li>
-                        <li><i class="fab fa-linux fa-2x"></i>Linus Ubuntu</li>
-                        <li>CSS / SCSS</li>
-                    </ul>
+                <div class="col-12">
+                    <div class="button-group filter-button-group">
+                        <button class="btn btn-dark" data-filter="*">Tous</button>
+                        <button class="btn btn-dark" data-filter="langage">Langage</button>
+                        <button class="btn btn-dark" data-filter="base-de-donnees">Base de données</button>
+                        <button class="btn btn-dark" data-filter="bibliotheque">Bibliothèque</button>
+                        <button class="btn btn-dark" data-filter="framework">Frameworks</button>
+                        <button class="btn btn-dark" data-filter="versionning">Versionning</button>
+                        <button class="btn btn-dark" data-filter="os">Système d'exploitation</button>
+                    </div>
                 </div>
-                <div class="right-infos bg-light col-md-2 col-sm-3 col-12">
-                    <ul class="custom-list text-right">
-                        <li>Symfony > 2</li>
-                        <li>Doctrine ORM</li>
-                        <li>Zend Framework 2</li>
-                        <li>JQuery</li>
-                        <li>Bootstrap</li>
-                        <li>Angular</li>
-                    </ul>
-                </div>
-                <div class="left-info bg-light offset-sm-1 col-sm-5 col-12">
-                    <ul class="custom-list">
-                        <li>DataTable</li>
-                        <li>JQuery UI</li>
-                    </ul>
-                </div>
-                <div class="right-infos bg-light col-sm-5 col-12">
-                    <ul class="custom-list">
-                        <li>MySQL</li>
-                        <li>Git</li>
-                    </ul>
+                <div class="col-12 grid bg-dark">
+                    {% for competence in competences %}
+                    <div class="grid-item {{ competence.category|categoryClass }}">{{ competence.label }}<br>
+                        <i class="{{ competence.icon }} fa-2x"></i><br>
+                        <span class="rating">
+                            {% for i in range(1, 5) %}
+                                {% if i <= competence.note %}
+                                    <span class="fa fa-star"></span>
+                                {% else %}
+                                    <span class="far fa-star"></span>
+                                {% endif %}
+                            {% endfor %}
+                        </span>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/competences.js') }}"></script>
 {% endblock %}
