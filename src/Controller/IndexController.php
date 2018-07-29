@@ -202,7 +202,7 @@ class IndexController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $message = (new \Swift_Message('Message provenant du site internet'))
-                ->setFrom($data['email'])
+                ->setFrom(getenv('ORIGIN_ADDRESS'))
                 ->setTo(getenv('DELIVERY_ADDRESS'))
                 ->setBody(
                     $this->renderView(
