@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -119,6 +120,12 @@ class IndexController extends Controller
                "category" => "Versionning",
                "note" => 3
            ],
+           "Deployer" => [
+               "label" => "Deployer",
+               "icon" => "fas fa-upload",
+               "category" => "Versionning",
+               "note" => 3
+           ],
         ];
 
       return $this->render('index/competences.html.twig', [
@@ -135,8 +142,12 @@ class IndexController extends Controller
 
     /**
      * @Route("/contact", name="contact")
+     *
+     * @param Request $request
+     * @param \Swift_Mailer $mailer
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function contact(Request $request) {
+    public function contact(Request $request, \Swift_Mailer $mailer) {
         $form = $this->createFormBuilder()
             ->add('prenom', TextType::class, [
                 'label' => 'Prénom',
@@ -145,7 +156,8 @@ class IndexController extends Controller
                 ],
                 'attr' => [
                     'class' => 'col-12 col-sm-7'
-                ]
+                ],
+                'required' => true
             ])
             ->add('nom', TextType::class, [
                 'label' => 'Nom',
@@ -154,16 +166,18 @@ class IndexController extends Controller
                 ],
                 'attr' => [
                     'class' => 'col-12 col-sm-7'
-                ]
+                ],
+                'required' => true
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Email',
+                'label' => 'Votre email',
                 'label_attr' => [
                     'class' => 'col-12 col-sm-3 offset-sm-1'
                 ],
                 'attr' => [
                     'class' => 'col-12 col-sm-7'
-                ]
+                ],
+                'required' => true
             ])
             ->add('message', TextareaType::class, [
                 'label' => 'Votre message',
@@ -172,7 +186,8 @@ class IndexController extends Controller
                 ],
                 'attr' => [
                     'class' => 'col-12 col-sm-7'
-                ]
+                ],
+                'required' => true
             ])
             ->add('send', SubmitType::class, [
                 'label' => 'Envoyer',
@@ -185,12 +200,31 @@ class IndexController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // data is an array with "name", "email", and "message" keys
             $data = $form->getData();
+
+            $message = (new \Swift_Message('Message provenant du site internet'))
+                ->setFrom($data['email'])
+                ->setTo(getenv('DELIVERY_ADDRESS'))
+                ->setBody(
+                    $this->renderView(
+                        'emails/contact_mail.html.twig', [
+                            'data' => $data
+                        ]
+                    ),
+                    'text/html'
+                );
+
+            $mailer->send($message);
+
+            return $this->render('index/contact.html.twig', [
+                'form' => $form->createView(),
+                'sent' => true
+            ]);
         }
 
       return $this->render('index/contact.html.twig', [
-          'form' => $form->createView()
+          'form' => $form->createView(),
+          'sent' => false
       ]);
     }
 }

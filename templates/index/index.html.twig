@@ -1,13 +1,20 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/index.css') }}">
+{% endblock %}
+
 {% block body %}
-    <div class="page-header">
+    <div class="page-header index-page-header">
         <div class="page-header-p1">Victor</div>
         <div class="page-header-p2">
             <span>Robin</span>
         </div>
-        <div class="page-header-p3 anim-text-flow">
-            développeur web symfony
+        <div class="page-header-p3">
+            <span class="anim-text-flow">
+                développeur web symfony
+            </span>
         </div>
     </div>
     <div class="custom-container">
@@ -29,7 +36,6 @@
                 <div class="line-infos bg-dark offset-sm-1 col-sm-10 col-12">
                     <h2 class="text-center">A propos de ce site</h2>
                     <p class="text-center">Ce site Web a été réalisé dans l'optique de faire une démonstration technique. Vous pouvez en consulter les <a href="https://github.com/Darcier/siteperso">sources</a>. Voici une courte liste des technos et librairies utilisées :</p>                    <ul class="custom-list-inline">
-                        <li>Nginx</li>
                         <li>PHP 7.1</li>
                         <li>Symfony 4</li>
                         <li>Bootstrap 4</li>

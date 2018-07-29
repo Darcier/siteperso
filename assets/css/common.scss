@@ -94,8 +94,6 @@ body {
       font-weight: 300;
     }
     nav {
-      max-height: 30px;
-      padding: 0 100px !important;
     }
   }
   .page-header {
@@ -146,14 +144,15 @@ body {
       height:100%;
       margin: 0;
       max-width: none;
+      border-top: 1px solid #fff;
     }
     .left-infos,
     .right-infos,
     .line-infos {
-      padding: 15px;
+      padding: 40px;
       text-align: justify;
       p {
-        line-height: 1.25em;
+        line-height: 1.423em;
       }
     }
     .line-infos {
@@ -212,7 +211,7 @@ body {
   .main-timeline:before{
     content: "";
     width: 5px;
-    height: 70%;
+    height: 100%;
     background:#333;
     position: absolute;
     top: 70px;

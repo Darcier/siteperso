@@ -23,6 +23,9 @@
     "doctrine/lexer": {
         "version": "v1.0.1"
     },
+    "egulias/email-validator": {
+        "version": "2.1.4"
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
@@ -43,6 +46,9 @@
             "version": "4.0",
             "ref": "aaddfdf43cdecd4cf91f992052d76c2cadc04543"
         }
+    },
+    "swiftmailer/swiftmailer": {
+        "version": "v6.1.2"
     },
     "symfony/asset": {
         "version": "v4.1.1"
@@ -125,6 +131,9 @@
     "symfony/polyfill-mbstring": {
         "version": "v1.8.0"
     },
+    "symfony/polyfill-php72": {
+        "version": "v1.8.0"
+    },
     "symfony/property-access": {
         "version": "v4.1.1"
     },
@@ -135,6 +144,15 @@
             "branch": "master",
             "version": "4.0",
             "ref": "cda8b550123383d25827705d05a42acf6819fe4e"
+        }
+    },
+    "symfony/swiftmailer-bundle": {
+        "version": "2.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.5",
+            "ref": "3db029c03e452b4a23f7fc45cec7c922c2247eb8"
         }
     },
     "symfony/twig-bridge": {
@@ -148,6 +166,9 @@
             "version": "3.3",
             "ref": "f75ac166398e107796ca94cc57fa1edaa06ec47f"
         }
+    },
+    "symfony/var-dumper": {
+        "version": "v4.1.2"
     },
     "symfony/yaml": {
         "version": "v4.1.1"

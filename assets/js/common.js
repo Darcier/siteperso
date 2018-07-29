@@ -5,7 +5,7 @@ require('bootstrap');
 require('@fortawesome/fontawesome-free/js/all.js');
 
 $(function() {
-    $('.page-header-p3').html(function(i, html) {
+    $('.anim-text-flow').html(function(i, html) {
         var chars = $.trim(html).split("");
 
         return '<span>' + chars.join('</span><span>') + '</span>';

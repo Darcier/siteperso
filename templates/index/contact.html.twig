@@ -13,10 +13,15 @@
     <div id="index-container">
         <div class="container h-100">
             <div class="row h-100">
-                <div class="col-12">
-                    {{ form_start(form) }}
-                    {{ form_widget(form) }}
-                    {{ form_end(form) }}
+                {% if not sent %}
+                    <div class="col-12">
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        {{ form_end(form) }}
+                {% else %}
+                    <div class="col-12 text-center">
+                        Votre message a bien été envoyé. Je tâcherai d'y répondre le plus rapidement possible.
+                {% endif %}
                 </div>
             </div>
         </div>
