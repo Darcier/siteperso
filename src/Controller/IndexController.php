@@ -201,7 +201,6 @@ class IndexController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-
             $message = (new \Swift_Message('Message provenant du site internet'))
                 ->setFrom($data['email'])
                 ->setTo(getenv('DELIVERY_ADDRESS'))
@@ -216,10 +215,10 @@ class IndexController extends Controller
 
             $mailer->send($message);
 
-            return $this->render('index/contact.html.twig', [
+          /*  return $this->render('index/contact.html.twig', [
                 'form' => $form->createView(),
                 'sent' => true
-            ]);
+            ]);*/
         }
 
       return $this->render('index/contact.html.twig', [
